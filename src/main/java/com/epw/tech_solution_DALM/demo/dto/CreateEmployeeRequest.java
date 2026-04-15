@@ -28,9 +28,14 @@ public class CreateEmployeeRequest {
     @PastOrPresent(message = "Hire date cannot be in the future")
     private LocalDate hireDate;
 
+    @NotNull(message = "Department id is required")
+    @Positive(message = "Department id must be greater than 0")
+    private Long departmentId;
+
     public CreateEmployeeRequest() {
     }
 
+    // Getters and Setters
     public String getName() {
         return name;
     }
@@ -69,5 +74,13 @@ public class CreateEmployeeRequest {
 
     public void setHireDate(LocalDate hireDate) {
         this.hireDate = hireDate;
+    }
+
+    public Long getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(Long departmentId) {
+        this.departmentId = departmentId;
     }
 }

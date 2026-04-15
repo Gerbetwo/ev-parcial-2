@@ -27,24 +27,15 @@ public class Employee {
     @Column(name = "hire_date", nullable = false)
     private LocalDate hireDate;
 
-    public Employee() {
-    }
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "department_id", nullable = false)
+    private Department department;
 
-    public Employee(Long id, String name, String email, String position, BigDecimal salary, LocalDate hireDate) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.position = position;
-        this.salary = salary;
-        this.hireDate = hireDate;
+    public Employee() {
     }
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -85,5 +76,17 @@ public class Employee {
 
     public void setHireDate(LocalDate hireDate) {
         this.hireDate = hireDate;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

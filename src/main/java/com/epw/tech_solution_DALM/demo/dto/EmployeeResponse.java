@@ -11,19 +11,24 @@ public class EmployeeResponse {
     private String position;
     private BigDecimal salary;
     private LocalDate hireDate;
+    private Long departmentId;
+    private String departmentName;
 
     public EmployeeResponse() {
     }
 
-    public EmployeeResponse(Long id, String name, String email, String position, BigDecimal salary, LocalDate hireDate) {
+    public EmployeeResponse(Long id, String name, String email, String position, BigDecimal salary, LocalDate hireDate, Long departmentId, String departmentName) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.position = position;
         this.salary = salary;
         this.hireDate = hireDate;
+        this.departmentId = departmentId;
+        this.departmentName = departmentName;
     }
 
+    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -70,5 +75,21 @@ public class EmployeeResponse {
 
     public void setHireDate(LocalDate hireDate) {
         this.hireDate = hireDate;
+    }
+
+    public Long getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(Long departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public String getDepartmentName() {
+        return departmentName;
+    }
+
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
     }
 }
