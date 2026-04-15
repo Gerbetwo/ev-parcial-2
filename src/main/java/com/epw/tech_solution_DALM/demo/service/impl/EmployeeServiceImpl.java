@@ -1,12 +1,12 @@
 package com.epw.tech_solution_DALM.demo.service.impl;
 
 import com.epw.tech_solution_DALM.demo.dto.CreateEmployeeRequest;
-import com.epw.tech_solution_DALM.demo.dto.UpdateEmployeeRequest;
 import com.epw.tech_solution_DALM.demo.dto.EmployeeResponse;
+import com.epw.tech_solution_DALM.demo.dto.UpdateEmployeeRequest;
 import com.epw.tech_solution_DALM.demo.entity.Employee;
+import com.epw.tech_solution_DALM.demo.exception.ResourceNotFoundException;
 import com.epw.tech_solution_DALM.demo.repository.EmployeeRepository;
 import com.epw.tech_solution_DALM.demo.service.EmployeeService;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,7 +38,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeResponse updateEmployee(Long id, UpdateEmployeeRequest employeeRequest) {
         Employee employee = employeeRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Employee not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Employee not found with id: " + id));
 
         employee.setName(employeeRequest.getName());
         employee.setEmail(employeeRequest.getEmail());
